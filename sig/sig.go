@@ -41,7 +41,7 @@ func (s *System) SendLogs(count uint32) error {
 	}
 
 	// create a temp file so that we can write data to it and the exporter not block
-	tmp := "/tmp/temp.prom"
+	tmp := fmt.Sprintf("%s/temp.prom", os.TempDir())
 	f, err := os.Create(tmp)
 	if err != nil {
 		return err
